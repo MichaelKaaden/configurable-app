@@ -11,7 +11,7 @@ import { Book, BooksService } from "../../../projects/book-monkey-api/src/lib";
 })
 export class AppComponent {
     title = "configurable-app";
-    settings: Settings | undefined;
+    settings: Settings;
     books$: Observable<Book[]>;
 
     constructor(private settingsService: SettingsService, private booksService: BooksService) {

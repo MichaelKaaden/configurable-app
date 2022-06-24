@@ -1,11 +1,11 @@
-import { Injectable } from "@angular/core";
-import { Settings } from "../models/settings";
+import { Inject, Injectable } from "@angular/core";
+import { SETTINGS, Settings } from "../models/settings";
 
 @Injectable({
     providedIn: "root",
 })
 export class SettingsService {
-    settings: Settings | undefined;
+    constructor(@Inject(SETTINGS) public settings: Settings) {}
 
     // lots of convenience methods
 }
