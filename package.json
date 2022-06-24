@@ -5,6 +5,7 @@
     "scripts": {
         "build": "ng build",
         "generate:openapi": "java -jar openapi-generator-cli-6.0.0.jar generate -o projects/book-monkey-api/src/lib -i https://api.angular.schule/swagger.json -g typescript-angular --additional-properties npmName=@angular-schule/book-monkey-api,ngVersion=14,stringEnums=true --type-mappings=DateTime=Date --skip-validate-spec",
+        "generate:pdf": "pandoc -s -V geometry:margin=1in -o README.pdf README.md",
         "prettify": "prettier --write \"{projects,src}/**/*.{html,json,scss,md,js,ts}\"",
         "ng": "ng",
         "prepare:openapi": "curl -O https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/6.0.0/openapi-generator-cli-6.0.0.jar",
