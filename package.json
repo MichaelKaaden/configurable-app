@@ -4,8 +4,10 @@
     "version": "0.1.0",
     "scripts": {
         "build": "ng build",
-        "ng": "ng",
+        "generate:openapi": "java -jar openapi-generator-cli-6.0.0.jar generate -o projects/book-monkey-api/src/lib -i https://api.angular.schule/swagger.json -g typescript-angular --additional-properties npmName=@angular-schule/book-monkey-api,ngVersion=14,stringEnums=true --type-mappings=DateTime=Date --skip-validate-spec",
         "prettify": "prettier --write \"{projects,src}/**/*.{html,json,scss,md,js,ts}\"",
+        "ng": "ng",
+        "prepare:openapi": "curl -O https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/6.0.0/openapi-generator-cli-6.0.0.jar",
         "start": "ng serve",
         "test": "ng test",
         "watch": "ng build --watch --configuration development"
@@ -35,6 +37,7 @@
         "karma-coverage": "~2.2.0",
         "karma-jasmine": "~5.1.0",
         "karma-jasmine-html-reporter": "~2.0.0",
+        "ng-packagr": "^14.0.2",
         "prettier": "^2.7.1",
         "typescript": "~4.7.4"
     }
