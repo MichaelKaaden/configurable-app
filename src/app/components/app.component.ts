@@ -1,4 +1,6 @@
 import { Component } from "@angular/core";
+import { Settings } from "../models/settings";
+import { SettingsService } from "../services/settings.service";
 
 @Component({
     selector: "app-root",
@@ -7,4 +9,9 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
     title = "configurable-app";
+    settings: Settings | undefined;
+
+    constructor(private settingsService: SettingsService) {
+        this.settings = settingsService.settings;
+    }
 }
