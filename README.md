@@ -179,7 +179,7 @@ current `baseUrl`:
 
 Running the app we see the expected output.
 
-![Screenshot of the app running in the Browser](../configurable-app/images/screenshot1.png)
+![Screenshot of the app running in the Browser](./images/screenshot1.png)
 
 ### Generating the API Client
 
