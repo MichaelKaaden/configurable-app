@@ -39,11 +39,15 @@ export class BooksslowService {
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string|string[], @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
         }
         if (typeof this.configuration.basePath !== 'string') {
+            if (Array.isArray(basePath) && basePath.length > 0) {
+                basePath = basePath[0];
+            }
+
             if (typeof basePath !== 'string') {
                 basePath = this.basePath;
             }
@@ -53,6 +57,7 @@ export class BooksslowService {
     }
 
 
+    // @ts-ignore
     private addToHttpParams(httpParams: HttpParams, value: any, key?: string): HttpParams {
         if (typeof value === "object" && value instanceof Date === false) {
             httpParams = this.addToHttpParamsRecursive(httpParams, value);
@@ -133,7 +138,8 @@ export class BooksslowService {
             }
         }
 
-        return this.httpClient.get<Book>(`${this.configuration.basePath}/books/${encodeURIComponent(String(isbn))}/slow`,
+        let localVarPath = `/books/${this.configuration.encodeParam({name: "isbn", value: isbn, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/slow`;
+        return this.httpClient.get<Book>(`${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -186,7 +192,8 @@ export class BooksslowService {
             }
         }
 
-        return this.httpClient.get<Array<Book>>(`${this.configuration.basePath}/books/slow`,
+        let localVarPath = `/books/slow`;
+        return this.httpClient.get<Array<Book>>(`${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,

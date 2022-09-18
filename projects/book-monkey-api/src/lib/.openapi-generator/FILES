@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/api.ts
@@ -17,5 +16,6 @@ model/restError.ts
 model/thumbnail.ts
 ng-package.json
 package.json
+param.ts
 tsconfig.json
 variables.ts

@@ -41,11 +41,15 @@ export class BooksService {
     public configuration = new Configuration();
     public encoder: HttpParameterCodec;
 
-    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string, @Optional() configuration: Configuration) {
+    constructor(protected httpClient: HttpClient, @Optional()@Inject(BASE_PATH) basePath: string|string[], @Optional() configuration: Configuration) {
         if (configuration) {
             this.configuration = configuration;
         }
         if (typeof this.configuration.basePath !== 'string') {
+            if (Array.isArray(basePath) && basePath.length > 0) {
+                basePath = basePath[0];
+            }
+
             if (typeof basePath !== 'string') {
                 basePath = this.basePath;
             }
@@ -55,6 +59,7 @@ export class BooksService {
     }
 
 
+    // @ts-ignore
     private addToHttpParams(httpParams: HttpParams, value: any, key?: string): HttpParams {
         if (typeof value === "object" && value instanceof Date === false) {
             httpParams = this.addToHttpParamsRecursive(httpParams, value);
@@ -131,7 +136,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.delete<any>(`${this.configuration.basePath}/books`,
+        let localVarPath = `/books`;
+        return this.httpClient.delete<any>(`${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -184,7 +190,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.get<Array<Book>>(`${this.configuration.basePath}/books`,
+        let localVarPath = `/books`;
+        return this.httpClient.get<Array<Book>>(`${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -241,7 +248,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.get<any>(`${this.configuration.basePath}/books/${encodeURIComponent(String(isbn))}/check`,
+        let localVarPath = `/books/${this.configuration.encodeParam({name: "isbn", value: isbn, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/check`;
+        return this.httpClient.get<any>(`${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -298,7 +306,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.delete<any>(`${this.configuration.basePath}/books/${encodeURIComponent(String(isbn))}`,
+        let localVarPath = `/books/${this.configuration.encodeParam({name: "isbn", value: isbn, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        return this.httpClient.delete<any>(`${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -355,7 +364,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.get<Book>(`${this.configuration.basePath}/books/${encodeURIComponent(String(isbn))}`,
+        let localVarPath = `/books/${this.configuration.encodeParam({name: "isbn", value: isbn, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        return this.httpClient.get<Book>(`${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -426,7 +436,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.put<Book>(`${this.configuration.basePath}/books/${encodeURIComponent(String(isbn))}`,
+        let localVarPath = `/books/${this.configuration.encodeParam({name: "isbn", value: isbn, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        return this.httpClient.put<Book>(`${this.configuration.basePath}${localVarPath}`,
             book,
             {
                 context: localVarHttpContext,
@@ -497,7 +508,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.post<any>(`${this.configuration.basePath}/books/${encodeURIComponent(String(isbn))}/rate`,
+        let localVarPath = `/books/${this.configuration.encodeParam({name: "isbn", value: isbn, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}/rate`;
+        return this.httpClient.post<any>(`${this.configuration.basePath}${localVarPath}`,
             rating,
             {
                 context: localVarHttpContext,
@@ -564,7 +576,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.post<Book>(`${this.configuration.basePath}/books`,
+        let localVarPath = `/books`;
+        return this.httpClient.post<Book>(`${this.configuration.basePath}${localVarPath}`,
             book,
             {
                 context: localVarHttpContext,
@@ -622,7 +635,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.get<Array<Book>>(`${this.configuration.basePath}/books/search/${encodeURIComponent(String(searchTerm))}`,
+        let localVarPath = `/books/search/${this.configuration.encodeParam({name: "searchTerm", value: searchTerm, in: "path", style: "simple", explode: false, dataType: "string", dataFormat: undefined})}`;
+        return this.httpClient.get<Array<Book>>(`${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
@@ -683,7 +697,8 @@ export class BooksService {
             }
         }
 
-        return this.httpClient.get<Array<Book>>(`${this.configuration.basePath}/secure/books`,
+        let localVarPath = `/secure/books`;
+        return this.httpClient.get<Array<Book>>(`${this.configuration.basePath}${localVarPath}`,
             {
                 context: localVarHttpContext,
                 responseType: <any>responseType_,
