@@ -1,45 +1,45 @@
 {
-    "name": "configurable-app",
-    "author": "Michael Kaaden <github@kaaden.net>",
-    "version": "0.1.0",
-    "scripts": {
-        "build": "ng build",
-        "generate:openapi": "java -jar openapi-generator-cli-6.0.0.jar generate -o projects/book-monkey-api/src/lib -i https://api.angular.schule/swagger.json -g typescript-angular --additional-properties npmName=@angular-schule/book-monkey-api,ngVersion=14,stringEnums=true --type-mappings=DateTime=Date --skip-validate-spec",
-        "generate:pdf": "pandoc -s -V geometry:margin=1in -o README.pdf README.md",
-        "prettify": "prettier --write \"{projects,src}/**/*.{html,json,scss,md,js,ts}\"",
-        "ng": "ng",
-        "prepare:openapi": "curl -O https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/6.0.0/openapi-generator-cli-6.0.0.jar",
-        "start": "ng serve",
-        "test": "ng test",
-        "watch": "ng build --watch --configuration development"
-    },
-    "private": true,
-    "dependencies": {
-        "@angular/animations": "^14.0.3",
-        "@angular/common": "^14.0.3",
-        "@angular/compiler": "^14.0.3",
-        "@angular/core": "^14.0.3",
-        "@angular/forms": "^14.0.3",
-        "@angular/platform-browser": "^14.0.3",
-        "@angular/platform-browser-dynamic": "^14.0.3",
-        "@angular/router": "^14.0.3",
-        "rxjs": "~7.5.5",
-        "tslib": "^2.4.0",
-        "zone.js": "~0.11.6"
-    },
-    "devDependencies": {
-        "@angular-devkit/build-angular": "^14.0.3",
-        "@angular/cli": "~14.0.3",
-        "@angular/compiler-cli": "^14.0.3",
-        "@types/jasmine": "~4.0.3",
-        "jasmine-core": "~4.2.0",
-        "karma": "~6.4.0",
-        "karma-chrome-launcher": "~3.1.1",
-        "karma-coverage": "~2.2.0",
-        "karma-jasmine": "~5.1.0",
-        "karma-jasmine-html-reporter": "~2.0.0",
-        "ng-packagr": "^14.0.2",
-        "prettier": "^2.7.1",
-        "typescript": "~4.7.4"
-    }
+  "name": "configurable-app",
+  "author": "Michael Kaaden <github@kaaden.net>",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "ng build",
+    "generate:openapi": "java -jar openapi-generator-cli-6.0.0.jar generate -o projects/book-monkey-api/src/lib -i https://api.angular.schule/swagger.json -g typescript-angular --additional-properties npmName=@angular-schule/book-monkey-api,ngVersion=14,stringEnums=true --type-mappings=DateTime=Date --skip-validate-spec",
+    "generate:pdf": "pandoc -s -V geometry:margin=1in -o README.pdf README.md",
+    "prettify": "prettier --write \"{projects,src}/**/*.{html,json,scss,md,js,ts}\"",
+    "ng": "ng",
+    "prepare:openapi": "curl -O https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/6.0.0/openapi-generator-cli-6.0.0.jar",
+    "start": "ng serve",
+    "test": "ng test",
+    "watch": "ng build --watch --configuration development"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.2.2",
+    "@angular/common": "^14.2.2",
+    "@angular/compiler": "^14.2.2",
+    "@angular/core": "^14.2.2",
+    "@angular/forms": "^14.2.2",
+    "@angular/platform-browser": "^14.2.2",
+    "@angular/platform-browser-dynamic": "^14.2.2",
+    "@angular/router": "^14.2.2",
+    "rxjs": "~7.5.5",
+    "tslib": "^2.4.0",
+    "zone.js": "~0.11.6"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.3",
+    "@angular/cli": "~14.2.3",
+    "@angular/compiler-cli": "^14.2.2",
+    "@types/jasmine": "~4.0.3",
+    "jasmine-core": "~4.2.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.1",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "ng-packagr": "^14.0.2",
+    "prettier": "^2.7.1",
+    "typescript": "~4.7.4"
+  }
 }
